@@ -308,7 +308,7 @@ cards:
       - entity: input_number.makerworld_gift_card_points
         name: Points Required per Voucher
 ```
-<img width="399" height="626" alt="image" src="https://github.com/user-attachments/assets/4e1ce6da-5714-4fe7-945b-a64eee74dab0" />
+<img width="500" height="689" alt="image" src="https://github.com/user-attachments/assets/de78f43d-427d-47ac-a498-9fd643557104" />
 ---
 
 ### Step 4: Milestone Push Notification Automation

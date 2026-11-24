@@ -192,19 +192,16 @@ Open your **`template.yaml`** file and paste the following block.
       unique_id: makerworld_redeemable_cash_value
       icon: mdi:cash-multiple
       state: >
-        {% set pts = states('sensor.{location}_makerworld_{user_id}_points') | int(0) %}
-        {% set target = states('input_number.makerworld_gift_card_points') | int(535) %}
+        {% set cards = states('sensor.makerworld_available_gift_cards') | int(0) %}
         {% set card_val = states('input_number.makerworld_gift_card_value') | int(35) %}
         {% set raw_curr = states('input_select.makerworld_currency') | default('£ - UK') %}
         {% set symbol = raw_curr.split(' ')[0] if ' ' in raw_curr else raw_curr %}
-        {% set total = (pts // target) * card_val if target > 0 else 0 %}
-        {{ symbol }}{{ total }}
+        {{ symbol }}{{ cards * card_val }}
       attributes:
         raw_amount: >
-          {% set pts = states('sensor.{location}_makerworld_{user_id}_points') | int(0) %}
-          {% set target = states('input_number.makerworld_gift_card_points') | int(535) %}
+          {% set cards = states('sensor.makerworld_available_gift_cards') | int(0) %}
           {% set card_val = states('input_number.makerworld_gift_card_value') | int(35) %}
-          {{ (pts // target) * card_val if target > 0 else 0 }}
+          {{ cards * card_val }}
         currency_symbol: >
           {% set raw_curr = states('input_select.makerworld_currency') | default('£ - UK') %}
           {{ raw_curr.split(' ')[0] if ' ' in raw_curr else raw_curr }}
